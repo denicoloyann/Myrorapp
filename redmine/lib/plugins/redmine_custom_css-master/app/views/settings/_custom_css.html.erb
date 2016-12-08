@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag 'codemirror', :plugin => :redmine_custom_css %>
+<%= javascript_include_tag 'codemirror.min', :plugin => :redmine_custom_css %>
+
+<style type="text/css">
+    .CodeMirror {
+        height: auto;
+        min-height: 300px;
+    }
+
+    .CodeMirror-scroll {
+        min-height: 300px;
+    }
+</style>
+
+<p>
+  <label><%= l(:label_cf_custom_css) %></label>
+  <%= text_area_tag 'settings[css]', @settings[:css] %>
+  <em class="info"> <%= l(:help_cf_css) %></em>
+</p>
+
+<script type="text/javascript">
+    var myCodeMirror = CodeMirror.fromTextArea(document.getElementById("settings_css"), {
+        mode: "css",
+        smartIndent: true,
+        lineNumbers: true,
+        matchBrackets: true,
+        autofocus: true,
+        viewportMargin: Infinity
+    });
+</script>
